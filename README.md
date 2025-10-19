@@ -1,13 +1,16 @@
-# Framework Sprint ETU003271
+# Framework Java - Projet de Développement par Sprints
 
-## Description
-Ce projet implémente un mini-framework Java basé sur les servlets Jakarta EE, développé par sprints successifs.
+## 📋 Description du Projet
 
-## Structure du projet
+Ce projet implémente un framework Java léger utilisant Jakarta EE Servlets, développé de manière itérative à travers plusieurs sprints. Chaque sprint ajoute de nouvelles fonctionnalités et améliore l'architecture du framework.
+
+## 🏗️ Structure du Projet
 
 ```
-Framework-Sprint-ETU003271/
-├── sprint-1/                    # Sprint 1 - Capture d'URLs
+framework-project/
+├── .gitignore
+├── README.md
+├── sprint-1/
 │   ├── src/
 │   │   └── framework/
 │   │       └── FrontServlet.java
@@ -16,66 +19,114 @@ Framework-Sprint-ETU003271/
 │   ├── test-webapp/
 │   │   └── WEB-INF/
 │   │       └── web.xml
-│   ├── build.sh                 # Script de build Unix/Linux
-│   ├── build.bat                # Script de build Windows
+│   ├── build.sh
+│   ├── build.bat
 │   └── README.md
-├── sprint-2/                    # À venir
-├── .gitignore
-└── README.md
+└── sprint-2/
+    ├── src/
+    │   └── main/
+    │       ├── java/
+    │       │   ├── jframework/
+    │       │   │   ├── annotation/
+    │       │   │   │   └── Url.java
+    │       │   │   └── servlet/
+    │       │   │       └── RooterServlet.java
+    │       │   └── project/
+    │       │       └── controller/
+    │       │           └── Personne.java
+    │       └── webapp/
+    │           ├── WEB-INF/
+    │           │   └── web.xml
+    │           └── annotation.jsp
+    ├── lib/
+    │   ├── jframework.jar
+    │   ├── servlet-api.jar
+    │   ├── mysql-connector-j-9.1.0.jar
+    │   └── postgresql-42.6.0.jar
+    ├── build.bat
+    └── README.md
 ```
 
-## Sprint 1 - Capture et affichage des URLs
+## 🚀 Sprint 1 - Fondations du Framework
 
 ### Objectifs
-- ✅ Créer un FrontServlet qui intercepte toutes les requêtes
-- ✅ Afficher l'URL demandée dans une page HTML formatée
-- ✅ Configuration web.xml pour le mapping des servlets
-- ✅ Scripts de build automatisés
+- Créer un servlet de base pour intercepter les requêtes HTTP
+- Mettre en place une structure de projet organisée
+- Implémenter un système de build simple
+- Créer une interface web moderne
 
-### Fonctionnalités implémentées
-- **FrontServlet** : Servlet principal avec interface HTML moderne
-- **Configuration** : Mapping de toutes les URLs vers le FrontServlet
-- **Build System** : Scripts de compilation pour Windows et Unix/Linux
-- **Structure modulaire** : Préparation pour les sprints suivants
+### Fonctionnalités Implémentées
+- **FrontServlet** : Servlet principal qui intercepte toutes les requêtes
+- **Interface Web Moderne** : Page HTML avec CSS intégré et design responsive
+- **Configuration Complète** : Fichier web.xml pour la configuration des servlets
+- **Scripts de Build** : Scripts pour compiler et packager le framework (Linux/Windows)
 
 ### Utilisation
-
-#### Compilation
 ```bash
-# Unix/Linux/Mac
+# Compilation (Linux/Mac)
 cd sprint-1
 ./build.sh
 
-# Windows
+# Compilation (Windows)
 cd sprint-1
 build.bat
 ```
 
-#### Déploiement
-1. Copier le fichier `test-webapp.war` généré dans votre serveur d'applications
-2. Accéder à l'application via votre navigateur
-3. Tester différentes URLs pour voir le FrontServlet en action
+## 🎯 Sprint 2 - Routage avec Annotations
 
-## Prochains sprints
+### Objectifs
+- Implémenter un système de routage basé sur les annotations
+- Créer l'annotation @Url pour mapper les méthodes aux URLs
+- Développer un RooterServlet intelligent
+- Ajouter la réflexion Java pour l'invocation dynamique des méthodes
 
-### Sprint 2 (À venir)
-- Système de routage avancé
-- Gestion des contrôleurs
-- Système d'annotations
+### Fonctionnalités Implémentées
+- **Annotation @Url** : Permet de mapper une méthode à une URL spécifique
+- **RooterServlet Amélioré** : Scan automatique des classes et routage intelligent
+- **Contrôleur de Démonstration** : Classe Personne avec plusieurs URLs mappées
+- **Page de Test** : Interface JSP pour tester le scan des annotations
+- **Support Base de Données** : Connecteurs MySQL et PostgreSQL inclus
+
+### Utilisation
+```bash
+# Compilation
+cd sprint-2
+build.bat
+
+# URLs de test après déploiement
+http://localhost:8080/framework-sprint2-test/oui
+http://localhost:8080/framework-sprint2-test/personne
+http://localhost:8080/framework-sprint2-test/info
+http://localhost:8080/framework-sprint2-test/annotation.jsp
+```
+
+### Évolution par rapport au Sprint 1
+| Aspect | Sprint 1 | Sprint 2 |
+|--------|----------|----------|
+| **Routage** | Affichage simple de l'URL | Routage intelligent avec annotations |
+| **Architecture** | Servlet basique | Framework avec annotations |
+| **Extensibilité** | Limitée | Facilement extensible |
+| **Configuration** | Manuelle dans web.xml | Automatique via annotations |
+
+## 🔮 Sprint 3 (Planifié)
+
+### Objectifs Futurs
+- Gestion des paramètres de requête et des différentes méthodes HTTP
 - Injection de dépendances
+- Gestion des sessions et validation des données
+- Templates et vues avancées
+- Gestion des exceptions
 
-### Sprint 3 (À venir)
-- Gestion des vues (templates)
-- Système de sessions
-- Validation des données
+## 🛠️ Technologies Utilisées
+- **Java** : Langage principal
+- **Jakarta EE** : Servlets et API web
+- **Réflexion Java** : Scan des classes et invocation dynamique
+- **HTML/CSS/JSP** : Interface utilisateur
+- **MySQL/PostgreSQL** : Support base de données
 
-## Prérequis
-- Java 11 ou supérieur
-- Serveur d'applications compatible Jakarta EE (Tomcat 10+, etc.)
-- Maven ou Gradle (optionnel)
-
-## Auteur
-ETU003271 - Framework Sprint Project
-
-## Licence
-Projet éducatif - Université
+## 📝 Notes de Développement
+- Chaque sprint est développé de manière incrémentale
+- La compatibilité ascendante est maintenue entre les sprints
+- Le code suit les bonnes pratiques Java et les conventions de nommage
+- Documentation complète pour chaque sprint
+- Architecture modulaire permettant l'extension facile du framework
