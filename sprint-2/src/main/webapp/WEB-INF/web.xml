@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <display-name>Framework Sprint 2 - Application de test</display-name>
+    <description>
+        Application de démonstration pour le Sprint 2 du framework.
+        Utilise les annotations @Url pour le routage des URLs.
+    </description>
+
+    <!-- Configuration du servlet de routage principal -->
+    <servlet>
+        <servlet-name>rooter</servlet-name>
+        <servlet-class>jframework.servlet.RooterServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <!-- Mapping du servlet pour intercepter toutes les requêtes -->
+    <servlet-mapping>
+        <servlet-name>rooter</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- Configuration pour les ressources statiques (optionnel) -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Page d'accueil par défaut -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
