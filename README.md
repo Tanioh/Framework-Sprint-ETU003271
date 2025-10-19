@@ -56,18 +56,6 @@ build.bat
 2. Accéder à l'application via votre navigateur
 3. Tester différentes URLs pour voir le FrontServlet en action
 
-## Prochains sprints
-
-### Sprint 2 (À venir)
-- Système de routage avancé
-- Gestion des contrôleurs
-- Système d'annotations
-- Injection de dépendances
-
-### Sprint 3 (À venir)
-- Gestion des vues (templates)
-- Système de sessions
-- Validation des données
 
 ## Prérequis
 - Java 11 ou supérieur
