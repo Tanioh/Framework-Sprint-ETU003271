@@ -108,14 +108,6 @@ http://localhost:8080/framework-sprint2-test/annotation.jsp
 | **Extensibilité** | Limitée | Facilement extensible |
 | **Configuration** | Manuelle dans web.xml | Automatique via annotations |
 
-## 🔮 Sprint 3 (Planifié)
-
-### Objectifs Futurs
-- Gestion des paramètres de requête et des différentes méthodes HTTP
-- Injection de dépendances
-- Gestion des sessions et validation des données
-- Templates et vues avancées
-- Gestion des exceptions
 
 ## 🛠️ Technologies Utilisées
 - **Java** : Langage principal
