@@ -19,8 +19,8 @@ import jframework.annotation.Controller;
 import jframework.annotation.Url;
 
 /**
- * Servlet principal du framework qui gère le routage des URLs
- * Version améliorée avec auto-découverte des contrôleurs via @Controller
+ * Servlet principal du framework qui gere le routage des URLs
+ * Version amelioree avec auto-decouverte des controleurs via @Controller
  * et mapping des URLs via @Url
  */
 public class RooterServlet extends HttpServlet {
@@ -36,19 +36,19 @@ public class RooterServlet extends HttpServlet {
     }
 
     /**
-     * Scanne automatiquement les classes annotées avec @Controller
-     * et leurs méthodes annotées avec @Url
+     * Scanne automatiquement les classes annotees avec @Controller
+     * et leurs methodes annotees avec @Url
      */
     private void scanForControllers() {
         try {
-            // Scanner le package project.controller pour les contrôleurs
+            // Scanner le package project.controller pour les controleurs
             List<Class<?>> controllerClasses = findClassesWithAnnotation("project.controller", Controller.class);
             
             for (Class<?> controllerClass : controllerClasses) {
                 scanControllerClass(controllerClass);
             }
             
-            // Scanner aussi les classes sans annotation pour compatibilité
+            // Scanner aussi les classes sans annotation pour compatibilite
             scanClass("project.controller.Personne");
             
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class RooterServlet extends HttpServlet {
     }
 
     /**
-     * Trouve toutes les classes annotées avec une annotation spécifique dans un package
+     * Trouve toutes les classes annotees avec une annotation specifique dans un package
      */
     public List<Class<?>> findClassesWithAnnotation(String packageName, Class<Controller> annotationClass) throws Exception {
         List<Class<?>> result = new ArrayList<>();
@@ -80,7 +80,7 @@ public class RooterServlet extends HttpServlet {
                         result.add(cls);
                     }
                 } catch (ClassNotFoundException e) {
-                    // Ignorer les classes qui ne peuvent pas être chargées
+                    // Ignorer les classes qui ne peuvent pas etre chargees
                 }
             }
         }
@@ -88,7 +88,7 @@ public class RooterServlet extends HttpServlet {
     }
 
     /**
-     * Scanne une classe contrôleur pour les méthodes annotées avec @Url
+     * Scanne une classe controleur pour les methodes annotees avec @Url
      */
     private void scanControllerClass(Class<?> controllerClass) {
         try {
@@ -108,7 +108,7 @@ public class RooterServlet extends HttpServlet {
     }
 
     /**
-     * Scanne une classe spécifique pour les annotations @Url (pour compatibilité)
+     * Scanne une classe specifique pour les annotations @Url (pour compatibilite)
      */
     private void scanClass(String className) {
         try {
@@ -141,7 +141,7 @@ public class RooterServlet extends HttpServlet {
     }
 
     /**
-     * Traite les requêtes HTTP en cherchant la méthode correspondante
+     * Traite les requetes HTTP en cherchant la methode correspondante
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -152,13 +152,13 @@ public class RooterServlet extends HttpServlet {
         String path = requestURI.substring(contextPath.length());
 
         try (PrintWriter out = response.getWriter()) {
-            // Chercher une méthode mappée pour cette URL
+            // Chercher une methode mappee pour cette URL
             Method method = urlMappings.get(path);
             Object controller = controllerInstances.get(path);
 
             if (method != null && controller != null) {
                 try {
-                    // Appeler la méthode du contrôleur
+                    // Appeler la methode du controleur
                     Object result = method.invoke(controller);
                     
                     out.println("<!DOCTYPE html>");
@@ -174,22 +174,22 @@ public class RooterServlet extends HttpServlet {
                     out.println("</head>");
                     out.println("<body>");
                     out.println("<div class='container'>");
-                    out.println("<h1>🚀 Framework Sprint 2-bis - Routage Avancé</h1>");
-                    out.println("<div class='info'>");
-                    out.println("<p><strong>URL mappée :</strong> " + path + "</p>");
-                    out.println("<p><strong>Contrôleur :</strong> " + controller.getClass().getSimpleName() + "</p>");
-                    out.println("<p><strong>Méthode :</strong> " + method.getName() + "</p>");
+                    out.println("<h1>Framework Sprint 2-bis - Routage Avance</h1>");
+                 out.println("<div class='success'>");
+                 out.println("<p><strong>URL mappee :</strong> " + path + "</p>");
+                 out.println("<p><strong>Controleur :</strong> " + controller.getClass().getSimpleName() + "</p>");
+                 out.println("<p><strong>Methode :</strong> " + method.getName() + "</p>");
                     if (result != null) {
-                        out.println("<p><strong>Résultat :</strong> " + result.toString() + "</p>");
-                    }
-                    out.println("</div>");
-                    out.println("<p>✅ Méthode exécutée avec succès via le framework Sprint 2-bis !</p>");
+                        out.println("<p><strong>Resultat :</strong> " + result.toString() + "</p>");
+                 }
+                 out.println("</div>");
+                 out.println("<p>Methode executee avec succes via le framework Sprint 2-bis !</p>");
                     out.println("</div>");
                     out.println("</body>");
                     out.println("</html>");
                     
                 } catch (Exception e) {
-                    out.println("<h2>Erreur lors de l'exécution de la méthode</h2>");
+                    out.println("<h2>Erreur lors de l'execution de la methode</h2>");
                     out.println("<p>" + e.getMessage() + "</p>");
                 }
             } else {
@@ -209,16 +209,16 @@ public class RooterServlet extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<div class='container'>");
-                out.println("<h1>🚀 Framework Sprint 2-bis</h1>");
-                out.println("<p><strong>URL demandée :</strong> " + path + "</p>");
-                out.println("<p>❌ Aucune méthode mappée pour cette URL.</p>");
+                out.println("<h1>Framework Sprint 2-bis</h1>");
+                out.println("<p><strong>URL demandee :</strong> " + path + "</p>");
+                out.println("<p>Aucune methode mappee pour cette URL.</p>");
                 out.println("<div class='url-list'>");
                 out.println("<h3>URLs disponibles :</h3>");
                 for (String url : urlMappings.keySet()) {
                     out.println("<a href='" + contextPath + url + "'>" + url + "</a>");
                 }
                 if (urlMappings.isEmpty()) {
-                    out.println("<p>Aucune URL mappée trouvée.</p>");
+                    out.println("<p>Aucune URL mappee trouvee.</p>");
                 }
                 out.println("</div>");
                 out.println("</div>");
