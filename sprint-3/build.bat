@@ -14,8 +14,10 @@ mkdir "%BUILD_DIR%"
 REM Collecte des sources
 dir /s /b "%SRC_DIR%\*.java" > sources.txt
 
-REM Compilation
-javac -cp "%LIB_DIR%\*;%BUILD_DIR%" -d "%BUILD_DIR%" @sources.txt
+REM Compilation (boucle pour gerer les chemins avec espaces)
+for /f "usebackq delims=" %%f in ("sources.txt") do (
+    javac -cp "%LIB_DIR%\*;%BUILD_DIR%" -d "%BUILD_DIR%" "%%f"
+)
 del sources.txt
 
 REM Packaging du JAR
