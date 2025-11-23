@@ -6,6 +6,7 @@ target/
 # JAR files
 *.jar
 !lib/*.jar
+!sprint-5/lib/*.jar
 
 # WAR files
 *.war
@@ -55,3 +56,4 @@ Thumbs.db
 build/
 dist/
 out/
+!sprint-5/build/**
