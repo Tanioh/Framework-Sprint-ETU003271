@@ -9,6 +9,7 @@ target/
 !sprint-5/lib/*.jar
 !sprint-6/lib/*.jar
 !sprint-9/lib/*.jar
+!sprint-10/lib/*.jar
 
 # WAR files
 *.war
@@ -61,3 +62,5 @@ out/
 !sprint-5/build/**
 !sprint-6/build/**
 !sprint-9/build/**
+!sprint-10/build/
+!sprint-10/build/**
